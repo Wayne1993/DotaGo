@@ -1,0 +1,16 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/target/
+**/.idea/
+**/.settings/
+*.iml
+*.classpath
+*.project
+*.pyc
+**/py/logs/
+./*.json
+output/
