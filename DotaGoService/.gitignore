@@ -1,5 +1,5 @@
 *.class
-
+bin/
 # Package Files #
 *.jar
 *.war
@@ -14,3 +14,6 @@
 **/py/logs/
 ./*.json
 output/
+.springBeans
+
+
