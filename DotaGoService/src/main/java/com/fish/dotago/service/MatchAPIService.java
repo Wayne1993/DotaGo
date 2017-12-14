@@ -1,19 +1,13 @@
 package com.fish.dotago.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.fish.dotago.common.Constants.APIConstants;
 import com.fish.dotago.common.enums.StatusCode;
-import com.fish.dotago.controller.model.MatchDetailAbilityUpgrades;
-import com.fish.dotago.controller.model.MatchDetailPlayer;
-import com.fish.dotago.controller.model.MatchDetailResponse;
 import com.fish.dotago.controller.model.MatchDetailResult;
-import com.fish.dotago.controller.model.MatchHistoryMatch;
-import com.fish.dotago.controller.model.MatchHistoryPlayer;
-import com.fish.dotago.controller.model.MatchHistoryResponse;
 import com.fish.dotago.controller.model.MatchHistoryResult;
 import com.fish.dotago.controller.rep.GetMatchDetailRep;
 import com.fish.dotago.controller.rep.GetMatchHistoryRep;
@@ -23,13 +17,13 @@ import com.fish.dotago.http.HttpRequest;
 import com.fish.dotago.mapper.Dota2HeroMapper;
 import com.fish.dotago.mapper.Dota2ItemMapper;
 
-import net.sf.json.JSONObject;
+//import net.sf.json.JSONObject;
 
 /**
- * @author Wayne
- * @date 2017年12月13日
+ * @author cyy
+ * @date 2017年12月14日
  * 
- * servie for hero
+ *       servie for matchAPI
  *
  */
 @Service
@@ -39,24 +33,26 @@ public class MatchAPIService {
 	private Dota2HeroMapper dota2HerosMapper;
 	@Autowired
 	private Dota2ItemMapper dota2ItemMapper;
-	
+
 	private HttpRequest httpRequest = new HttpRequest();
-	
+
+	/**
+	 * @ClassName: getMatchHistoryByAccountId
+	 * @Description: TODO(通过数字Id获取最近500场比赛历史)
+	 * @author: cyy
+	 * @date: 2017年12月14日15:49:23
+	 */
 	public GetMatchHistoryRep getMatchHistoryByAccountId(GetMatchHistoryReq getMatchHistoryReq) {
 		GetMatchHistoryRep getMatchHistoryRep = new GetMatchHistoryRep();
-		
+
 		try {
-			String param = "?key=BCBB7D08E2266260C41253646133E110&account_id="+getMatchHistoryReq.getAccountId();
-			String result = httpRequest.sendGet("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/",
-					param);
-			JSONObject json_test = JSONObject.fromObject(result);
+			String param = APIConstants.GET_MATCH_HISTORY_PARAM + getMatchHistoryReq.getAccountId();
+			String result = httpRequest.sendGet(APIConstants.GET_MATCH_HISTORY_URL, param);
 			
-			Map<String, Class> classMap = new HashMap<String, Class>();
-			classMap.put("result", MatchHistoryResponse.class);
-			classMap.put("matches", MatchHistoryMatch.class);
-			classMap.put("players", MatchHistoryPlayer.class);
-			MatchHistoryResult jb = (MatchHistoryResult) JSONObject.toBean(json_test, MatchHistoryResult.class, classMap);
-			getMatchHistoryRep.setMatchHistoryResult(jb);
+			MatchHistoryResult matchHistory = JSON.parseObject(result, new TypeReference<MatchHistoryResult>() {
+			});
+			getMatchHistoryRep.setMatchHistoryResult(matchHistory);
+
 			getMatchHistoryRep.setCode(StatusCode.SUCCESS);
 			getMatchHistoryRep.setMsg(StatusCode.SUCCESS.getDesc());
 		} catch (Exception e) {
@@ -66,21 +62,32 @@ public class MatchAPIService {
 		}
 		return getMatchHistoryRep;
 	}
-	
+
+	/**
+	 * @ClassName: getMatchDetailByMatchId
+	 * @Description: TODO(通过比赛Id获取最近比赛详情)
+	 * @author: cyy
+	 * @date: 2017年12月14日15:50:42
+	 */
 	public GetMatchDetailRep getMatchDetailByMatchId(GetMatchDetailReq getMatchDetailReq) {
 		GetMatchDetailRep getMatchDetailRep = new GetMatchDetailRep();
-		String param = "?key=BCBB7D08E2266260C41253646133E110&match_id="+getMatchDetailReq.getMatchId();
-		String result = httpRequest.sendGet("https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/",
-				param);
-		
-		JSONObject json_test = JSONObject.fromObject(result);
-		Map<String, Class> classMap = new HashMap<String, Class>();
-		classMap.put("result", MatchDetailResponse.class);
-		classMap.put("players", MatchDetailPlayer.class);
-		classMap.put("ability_upgrades", MatchDetailAbilityUpgrades.class);
-		MatchDetailResult jb = (MatchDetailResult) JSONObject.toBean(json_test, MatchDetailResult.class, classMap);
-		getMatchDetailRep.setMatchDetailResult(jb);
+
+		try {
+			String param = APIConstants.GET_MATCH_DETAILS_PARAM + getMatchDetailReq.getMatchId();
+			String result = httpRequest.sendGet(APIConstants.GET_MATCH_DETAILS_URL, param);
+
+			MatchDetailResult matchDetail = JSON.parseObject(result, new TypeReference<MatchDetailResult>() {
+			});
+			getMatchDetailRep.setMatchDetailResult(matchDetail);
+
+			getMatchDetailRep.setCode(StatusCode.SUCCESS);
+			getMatchDetailRep.setMsg(StatusCode.SUCCESS.getDesc());
+		} catch (Exception e) {
+			getMatchDetailRep.setCode(StatusCode.FAILED);
+			getMatchDetailRep.setMsg(StatusCode.FAILED.getDesc());
+			e.printStackTrace();
+		}
 		return getMatchDetailRep;
 	}
-	
+
 }

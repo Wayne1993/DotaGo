@@ -14,10 +14,10 @@ import com.fish.dotago.controller.req.GetMatchHistoryReq;
 import com.fish.dotago.service.MatchAPIService;
 
 /**
- * @author Wayne
- * @date 2017年12月13日
+ * @author cyy
+ * @date 2017年12月14日
  * 
- * hero's controller
+ * match's controller
  *
  */
 @RestController

@@ -9,12 +9,10 @@
 	<groupId>com.fish.dotago</groupId>
 	<artifactId>dotago-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!-- 公共配置项 -->
 	<properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.3.5.RELEASE</spring.version>
-        <!-- webService -->
-<!--         <cxf.version>3.1.10</cxf.version> -->
-<!--         <spring-security.version>4.2.3.RELEASE</spring-security.version> -->
     </properties>
 	<dependencies>
 		<dependency>
@@ -42,22 +40,33 @@
 			<version>1.1.1</version>
 		</dependency>
 		
+		<!-- json依赖 -->
 		<dependency>
-            <groupId>net.sf.json-lib</groupId>
-            <artifactId>json-lib</artifactId>
-            <version>2.4</version>
-        </dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.35</version>
+		</dependency>
+        
+        <!-- junit依赖 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.10</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- spring-test测试依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        
+        <!-- 引入自带的devtool实现页面也代码的热部署 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
