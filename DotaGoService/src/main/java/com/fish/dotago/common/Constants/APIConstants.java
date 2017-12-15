@@ -2,6 +2,12 @@ package com.fish.dotago.common.Constants;
 
 import java.math.BigInteger;
 
+/**
+ * @author cyy
+ * @date 2017年12月14日
+ * 
+ * API 常量
+ */
 public class APIConstants {
 
 	/*

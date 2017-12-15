@@ -4,6 +4,12 @@ import java.math.BigInteger;
 
 import com.fish.dotago.common.Constants.APIConstants;
 
+/**
+ * @author: cyy
+ * @date: 2017年12月14日15:50:42
+ * 
+ * steamId32位64位转换
+ */
 public class GetSteamId {
 
 	/**
