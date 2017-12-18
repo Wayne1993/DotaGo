@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fish.dotago.controller.rep.GetMatchDetailRep;
-import com.fish.dotago.controller.rep.GetMatchHistoryRep;
-import com.fish.dotago.controller.req.GetMatchDetailReq;
-import com.fish.dotago.controller.req.GetMatchHistoryReq;
+import com.fish.dotago.client.match.rep.GetMatchDetailRep;
+import com.fish.dotago.client.match.rep.GetMatchHistoryRep;
+import com.fish.dotago.client.match.req.GetMatchDetailReq;
+import com.fish.dotago.client.match.req.GetMatchHistoryReq;
 import com.fish.dotago.service.MatchAPIService;
 
 /**
