@@ -19,17 +19,17 @@ import com.fish.dotago.model.Dota2Hero;
 public class Dota2HeroService {
 
 	@Autowired
-	private Dota2HeroMapper dota2HerosMapper;
+	private Dota2HeroMapper dota2HeroMapper;
 	
 	public Dota2Hero getHeroById(int id) {
-		return dota2HerosMapper.getHeroById(id);
+		return dota2HeroMapper.getHeroById(id);
 	}
 	
 	public Dota2Hero getHeroByName(String name){
-		return dota2HerosMapper.getHeroByName(name);
+		return dota2HeroMapper.getHeroByName(name);
 	}
 
-	public List<Dota2Hero> getAllHeros() {
-		return dota2HerosMapper.getAllHeros();
+	public List<Dota2Hero> getAllHeroes() {
+		return dota2HeroMapper.getAllHeroes();
 	}
 }
