@@ -26,11 +26,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchAPIService {
 
-    @Autowired
-    private Dota2HeroMapper dota2HeroMapper;
-    @Autowired
-    private Dota2ItemMapper dota2ItemMapper;
-
     private HttpRequest httpRequest = new HttpRequest();
 
     /**
