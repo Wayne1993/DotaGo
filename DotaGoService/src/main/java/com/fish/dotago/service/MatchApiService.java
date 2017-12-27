@@ -7,7 +7,7 @@ import com.fish.dotago.client.match.rep.GetMatchDetailRep;
 import com.fish.dotago.client.match.rep.GetMatchHistoryRep;
 import com.fish.dotago.client.match.req.GetMatchDetailReq;
 import com.fish.dotago.client.match.req.GetMatchHistoryReq;
-import com.fish.dotago.common.constants.APIConstants;
+import com.fish.dotago.common.constants.ApiConstants;
 import com.fish.dotago.common.enums.StatusCode;
 import com.fish.dotago.http.HttpRequest;
 import com.fish.dotago.mapper.Dota2HeroMapper;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
  * servie for matchAPI
  */
 @Service
-public class MatchAPIService {
+public class MatchApiService {
 
 	@Autowired
     private HttpRequest httpRequest;

@@ -4,7 +4,7 @@ import com.fish.dotago.client.match.rep.GetMatchDetailRep;
 import com.fish.dotago.client.match.rep.GetMatchHistoryRep;
 import com.fish.dotago.client.match.req.GetMatchDetailReq;
 import com.fish.dotago.client.match.req.GetMatchHistoryReq;
-import com.fish.dotago.service.MatchAPIService;
+import com.fish.dotago.service.MatchApiService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,10 +20,10 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/match")
-public class MatchAPIController {
+public class MatchApiController {
 
     @Resource
-    private MatchAPIService steamAPIService;
+    private MatchApiService steamAPIService;
 
     @RequestMapping("/getMatchHistoryByAccountId")
     public GetMatchHistoryRep getMatchHistoryByAccountId(@RequestBody GetMatchHistoryReq getMatchHistoryReq) {

@@ -2,7 +2,7 @@ package com.fish.dotago.util;
 
 import java.math.BigInteger;
 
-import com.fish.dotago.common.constants.APIConstants;
+import com.fish.dotago.common.constants.ApiConstants;
 
 /**
  * @author: cyy
@@ -20,7 +20,7 @@ public class GetSteamId {
 	 */
 	public String getSteamId32(String steamId64) {
 		BigInteger steamId64Int = new BigInteger(steamId64);
-		BigInteger steamId32Int = steamId64Int.subtract(APIConstants.STEAMID_BIGINT);
+		BigInteger steamId32Int = steamId64Int.subtract(ApiConstants.STEAMID_BIGINT);
 		return steamId32Int.toString();
 	}
 
@@ -32,7 +32,7 @@ public class GetSteamId {
 	 */
 	public String getSteamId64(String steamId32) {
 		BigInteger steamId32Int = new BigInteger(steamId32);
-		BigInteger steamId64Int = steamId32Int.add(APIConstants.STEAMID_BIGINT);
+		BigInteger steamId64Int = steamId32Int.add(ApiConstants.STEAMID_BIGINT);
 		return steamId64Int.toString();
 	}
 

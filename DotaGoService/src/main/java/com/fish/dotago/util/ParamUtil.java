@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.fish.dotago.client.match.req.BaseJsonReq;
-import com.fish.dotago.common.constants.APIConstants;
+import com.fish.dotago.common.constants.ApiConstants;
 
 /**
  * @author Wayne
@@ -16,7 +16,7 @@ public class ParamUtil {
 	public static String getParamByObject(BaseJsonReq baseJsonReq) {
 		Map<String, String> map = baseJsonReq.getMap();
 		StringBuffer sf = new StringBuffer();
-		sf.append("?key=").append(APIConstants.KEY);
+		sf.append("?key=").append(ApiConstants.KEY);
 		for (Entry<String, String> entry : map.entrySet()) {
 			sf.append("&").append(entry.getKey()).append("=").append(entry.getValue());
 		}

@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * 
  * API 常量
  */
-public class APIConstants {
+public class ApiConstants {
 
 	/*
 	 * Steam API Key
