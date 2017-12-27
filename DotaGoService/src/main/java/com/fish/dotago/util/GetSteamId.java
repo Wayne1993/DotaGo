@@ -2,7 +2,7 @@ package com.fish.dotago.util;
 
 import java.math.BigInteger;
 
-import com.fish.dotago.common.Constants.APIConstants;
+import com.fish.dotago.common.constants.APIConstants;
 
 /**
  * @author: cyy

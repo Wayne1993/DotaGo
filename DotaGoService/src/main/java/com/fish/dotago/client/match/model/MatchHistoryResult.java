@@ -5,6 +5,11 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * @author Wayne
+ * @date 2017年12月27日
+ *
+ */
 @Data
 public class MatchHistoryResult {
 

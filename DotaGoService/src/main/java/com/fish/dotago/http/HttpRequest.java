@@ -9,6 +9,14 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+/**
+ * @author Wayne
+ * @date 2017年12月27日
+ *
+ */
+@Component
 public class HttpRequest {
 
 	private String id;

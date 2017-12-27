@@ -7,12 +7,15 @@ import com.fish.dotago.client.match.rep.GetMatchDetailRep;
 import com.fish.dotago.client.match.rep.GetMatchHistoryRep;
 import com.fish.dotago.client.match.req.GetMatchDetailReq;
 import com.fish.dotago.client.match.req.GetMatchHistoryReq;
-import com.fish.dotago.common.Constants.APIConstants;
+import com.fish.dotago.common.constants.APIConstants;
 import com.fish.dotago.common.enums.StatusCode;
 import com.fish.dotago.http.HttpRequest;
 import com.fish.dotago.mapper.Dota2HeroMapper;
 import com.fish.dotago.mapper.Dota2ItemMapper;
+import com.fish.dotago.util.ParamUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 //import net.sf.json.JSONObject;
@@ -26,7 +29,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchAPIService {
 
-    private HttpRequest httpRequest = new HttpRequest();
+	@Autowired
+    private HttpRequest httpRequest;
+    
+	/**
+	 * 获取比赛历史URL
+	 */
+    @Value("${dota2.url.get_match_history_url}")
+    private String matchHistoryUrl;
+    
+    /**
+	 * 获取比赛细节URL
+	 */
+    @Value("${dota2.url.get_match_details_url}")
+    private String getMatchDetailsUrl;
 
     /**
      * @ClassName: getMatchHistoryByAccountId
@@ -38,8 +54,8 @@ public class MatchAPIService {
         GetMatchHistoryRep getMatchHistoryRep = new GetMatchHistoryRep();
 
         try {
-            String param = APIConstants.GET_MATCH_HISTORY_PARAM + getMatchHistoryReq.getAccountId();
-            String result = httpRequest.sendGet(APIConstants.GET_MATCH_HISTORY_URL, param);
+            String param = ParamUtil.getParamByObject(getMatchHistoryReq);
+            String result = httpRequest.sendGet(matchHistoryUrl, param);
 
             MatchHistoryResponse matchHistory = JSON.parseObject(result, MatchHistoryResponse.class);
             getMatchHistoryRep.setMatchHistoryResponse(matchHistory);
@@ -64,8 +80,8 @@ public class MatchAPIService {
         GetMatchDetailRep getMatchDetailRep = new GetMatchDetailRep();
 
         try {
-            String param = APIConstants.GET_MATCH_DETAILS_PARAM + getMatchDetailReq.getMatchId();
-            String result = httpRequest.sendGet(APIConstants.GET_MATCH_DETAILS_URL, param);
+            String param = ParamUtil.getParamByObject(getMatchDetailReq);
+            String result = httpRequest.sendGet(getMatchDetailsUrl, param);
 
             MatchDetailResponse matchDetail = JSON.parseObject(result, MatchDetailResponse.class);
             getMatchDetailRep.setMatchDetailResponse(matchDetail);

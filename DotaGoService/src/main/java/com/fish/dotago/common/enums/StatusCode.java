@@ -14,6 +14,9 @@ import com.fish.dotago.common.enums.convertor.StatusCodeSerializer;
 @JsonSerialize(using = StatusCodeSerializer.class)
 @JsonDeserialize(using = StatusCodeDeserializer.class)
 public enum StatusCode {
+	/**
+	 * 接口调用成功
+	 */
 	SUCCESS("0000", "接口调用成功"),
 	FAILED("10001", "接口调用失败"),
 	CUSTOM_DATA_EXP("10002", "业务数据异常"),

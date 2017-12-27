@@ -26,14 +26,12 @@ public class MatchAPIController {
     private MatchAPIService steamAPIService;
 
     @RequestMapping("/getMatchHistoryByAccountId")
-    public @ResponseBody
-    GetMatchHistoryRep getMatchHistoryByAccountId(@RequestBody GetMatchHistoryReq getMatchHistoryReq) {
+    public GetMatchHistoryRep getMatchHistoryByAccountId(@RequestBody GetMatchHistoryReq getMatchHistoryReq) {
         return steamAPIService.getMatchHistoryByAccountId(getMatchHistoryReq);
     }
 
-    @RequestMapping("/getMatchDetailByAccountId")
-    public @ResponseBody
-    GetMatchDetailRep getMatchDetailByAccountId(@RequestBody GetMatchDetailReq getMatchDetailReq) {
+    @RequestMapping("/getMatchDetailByMatchId")
+    public GetMatchDetailRep getMatchDetailByMatchId(@RequestBody GetMatchDetailReq getMatchDetailReq) {
         return steamAPIService.getMatchDetailByMatchId(getMatchDetailReq);
     }
 

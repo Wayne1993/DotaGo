@@ -8,6 +8,11 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fish.dotago.common.enums.StatusCode;
 
+/**
+ * @author Wayne
+ * @date 2017年12月27日
+ *
+ */
 public class StatusCodeDeserializer extends JsonDeserializer<StatusCode> {
 
 	@Override
