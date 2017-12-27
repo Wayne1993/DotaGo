@@ -10,17 +10,17 @@ import java.math.BigInteger;
  */
 public class ApiConstants {
 
-	/*
+	/**
 	 * Steam API Key
 	 */
 	public static final String KEY = "BCBB7D08E2266260C41253646133E110";
 
-	/*
+	/**
 	 * 获取比赛详情API param
 	 */
 	public static final String GET_MATCH_DETAILS_PARAM = "?key=" + KEY + "&match_id=";
 	
-	/*
+	/**
 	 * steamId 64位，32位转换基数
 	 */
 	public static final BigInteger STEAMID_BIGINT = new BigInteger("76561197960265728");
